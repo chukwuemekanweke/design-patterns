@@ -14,9 +14,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunFactory();
-            RunInnerFactory();
-            RunAbstractFactory();
+            RunAbstractFactoryWithOCP();
             Console.ReadLine();
         }
 
@@ -176,6 +174,13 @@ namespace DesignPatterns
 
             drink.Consume();
         
+        }
+
+        static void RunAbstractFactoryWithOCP()
+        {
+            HotDrinkMachineOCP machine = new HotDrinkMachineOCP();
+            IHotDrink hotDrink = machine.MakeDrink();
+            hotDrink.Consume();
         }
 
 
