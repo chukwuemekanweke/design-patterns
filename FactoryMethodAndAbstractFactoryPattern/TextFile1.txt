@@ -1,0 +1,19 @@
+﻿Object creation logic becomes too convulated
+
+Constructor is not descriptive
+	Cannot overload with the same sets of arguments with different names
+	Objects can turn into 'optional parameter hell'
+
+Object creation (non-piecewise, unlike builder) 
+	Act of creating object can be outsourced to 
+		A seperate function (Factory Method)
+		May exist in seperate class (Factory)
+		Can create hierarchy of factories with the Abstract Factory
+
+		
+
+Factory:  A component responsible solely for the wholesale (not piecewise) creation of objects.
+
+Benefits of factory method is that you get overloads with the same set of parameter types but different names
+
+From the name you can make a suggestion on the kind of object being created, and that helps with having a more descriptive API
