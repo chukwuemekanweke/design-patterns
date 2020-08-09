@@ -1,4 +1,5 @@
 ﻿using DesignPatterns.BuilderPattern;
+using DesignPatterns.FactoryMethodAndAbstractFactoryPattern;
 using DesignPatterns.SOLIDDesignPrinciple;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,9 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunFacetedBuilder();
+            RunFactory();
+            RunInnerFactory();
+            RunAbstractFactory();
             Console.ReadLine();
         }
 
@@ -149,6 +152,30 @@ namespace DesignPatterns
                          .Earning(20000)
                     .Lives.At("Enugu").InCity("Enugu").WithPostalCode("");
             Console.WriteLine(person);
+        }
+
+        static void RunFactory()
+        {
+            Point point = Point.NewPolarPoint(1, 2);
+            
+            Console.WriteLine(point);
+        }
+
+        static void RunInnerFactory()
+        {
+            Point point = Point.Factory.NewCartersianPoint(1, 2);
+            point.ToString();
+           
+            Console.WriteLine(point);
+        }
+
+        static void RunAbstractFactory()
+        {
+            HotDrinkMachine machine = new HotDrinkMachine();
+            IHotDrink drink = machine.MakeDrink(HotDrinkMachine.AvailableDrink.Tea, 100);
+
+            drink.Consume();
+        
         }
 
 

@@ -17,3 +17,12 @@ Factory:  A component responsible solely for the wholesale (not piecewise) creat
 Benefits of factory method is that you get overloads with the same set of parameter types but different names
 
 From the name you can make a suggestion on the kind of object being created, and that helps with having a more descriptive API
+
+
+
+
+in the inner factory implementation i used a factory object that get's instantiated. but there is a static field which just returns the newed up PointFactory object
+
+
+Only real use for an abstract factory is to give out abstract object as opposed to concrete objects
+With Abstract factory you return abstract classes or interfaces
