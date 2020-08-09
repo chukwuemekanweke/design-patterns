@@ -1,5 +1,6 @@
 ﻿using DesignPatterns.BuilderPattern;
 using DesignPatterns.FactoryMethodAndAbstractFactoryPattern;
+using DesignPatterns.PrototypeDesignPattern;
 using DesignPatterns.SOLIDDesignPrinciple;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunAbstractFactoryWithOCP();
+            RunPrototypeWithObjectSerialization();
             Console.ReadLine();
         }
 
@@ -181,6 +182,26 @@ namespace DesignPatterns
             HotDrinkMachineOCP machine = new HotDrinkMachineOCP();
             IHotDrink hotDrink = machine.MakeDrink();
             hotDrink.Consume();
+        }
+
+        static void RunPrototypeWithObjectSerialization()
+        {
+            var lucy = new PrototypePersonDoneRight
+            {
+                Names = new[] { "lucy", "jacobs" },
+                Address = new PrototypeAddressDoneRight
+                {
+                    StreetName = "Olusalo close",
+                    HouseNumber = 123
+                }
+            };
+
+            var jane = lucy.DeepCopyXml();
+            jane.Address.HouseNumber = 1996;
+
+            Console.WriteLine(lucy);
+            Console.WriteLine(jane);
+
         }
 
 

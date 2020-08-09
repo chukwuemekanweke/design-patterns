@@ -1,0 +1,23 @@
+﻿The prototype design pattern is all about object copying
+
+Complicated objects aren't designed from scratch e.g cars
+	They reiterate existing designs
+
+An existing design (partially or fully constructed) is a prototype
+
+We make a copy (clone) the prototype and customize it
+	Requires 'deep copy' support.
+
+Deep copy requires copying not just an object, but you also need to copy that objects references
+
+We also need to make the cloning convenient via Factory
+
+
+Prototype: A partially or fully initialized object that you copy(clone) and make use of
+
+ICloneable is bad, it is not the interface you should be using for deep copies
+
+Summary:
+How do you clone a prototype
+	Implement your own deep copy functionality on all the objects and nested objects.
+	Serialize and deserialize
