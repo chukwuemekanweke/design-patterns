@@ -1,0 +1,21 @@
+﻿Singleton Pattern
+
+For some components it only makes sense to have one in the system
+  eg Object Factory
+
+used in cases where constructor call is expensive
+    so we only do it once
+    we provide everyone with the same instance
+
+    Want to prevent anyone creating additinal copies
+
+    need to take care of lazy instantiation and thread safety
+
+    A singleton is a component which is instantiated only once
+
+
+Singletons are difficult to test
+
+Instead of directly using a singleton, consider depending on an abstraction (e.g an interface)
+
+Consider defining singleton lifetime in DI container rather than hard coding one

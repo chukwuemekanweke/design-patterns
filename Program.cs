@@ -1,6 +1,7 @@
 ﻿using DesignPatterns.BuilderPattern;
 using DesignPatterns.FactoryMethodAndAbstractFactoryPattern;
 using DesignPatterns.PrototypeDesignPattern;
+using DesignPatterns.Singleton;
 using DesignPatterns.SOLIDDesignPrinciple;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunPrototypeWithObjectSerialization();
+            RunMonoState();
             Console.ReadLine();
         }
 
@@ -201,6 +202,34 @@ namespace DesignPatterns
 
             Console.WriteLine(lucy);
             Console.WriteLine(jane);
+
+        }
+
+        static void RunSingleton()
+        {
+            SingletonDatabase database = SingletonDatabase.Instance;
+            string city = "Tokyo";
+            Console.WriteLine($"{city} has population {database.GetPopulation(city)}"); 
+        }
+
+        static void RunMonoState()
+        {
+
+            CEO ceo1 = new CEO
+            {
+              Age = 24,
+              Name = "Emeka Nweke"
+            };
+
+            CEO ceo2 = new CEO
+            {
+                Age = 26,
+                Name = "Onyeka Nweke"
+            };
+
+
+            Console.WriteLine($"{nameof(ceo1)}: {ceo1}");
+            Console.WriteLine($"{nameof(ceo2)}: {ceo2}");
 
         }
 
