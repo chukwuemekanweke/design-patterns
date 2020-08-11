@@ -1,0 +1,16 @@
+﻿Bridge Pattern
+
+It avoids the "Cartesian Product" complexity explosion
+
+Bridge pattern avoids entity explosion
+
+The bridge pattern is a mechanism that decouples an interface (hierarchy) from an implementation (hierarchy)
+
+
+Summary:
+
+Decouple abstraction from implementation
+
+Both can exist can heirarchies. both referring to the abstractions and their implementations
+
+Bridge pattern is a stronger form of encapsulation

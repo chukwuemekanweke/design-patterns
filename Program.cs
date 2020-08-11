@@ -3,6 +3,7 @@ using DesignPatterns.FactoryMethodAndAbstractFactoryPattern;
 using DesignPatterns.PrototypeDesignPattern;
 using DesignPatterns.Singleton;
 using DesignPatterns.SOLIDDesignPrinciple;
+using DesignPatterns.StructuralDesignPatterns.BridgePattern;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,7 +17,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunMonoState();
+            RunBridgePattern();
             Console.ReadLine();
         }
 
@@ -230,9 +231,22 @@ namespace DesignPatterns
 
             Console.WriteLine($"{nameof(ceo1)}: {ceo1}");
             Console.WriteLine($"{nameof(ceo2)}: {ceo2}");
-
         }
 
+
+        static void RunBridgePattern()
+        {
+            /*
+            
+                    the IRenderer implementation would be better passed in with dependency injection
+
+             */
+            IRenderer renderer = new VectorRenderer();
+            Circle circle = new Circle(renderer,5);
+            circle.Draw();
+            circle.Resize(2);
+            circle.Draw();
+        }
 
 
     }

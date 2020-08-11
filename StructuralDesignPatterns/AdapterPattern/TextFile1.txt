@@ -1,0 +1,4 @@
+﻿An adapter gives us the interface we require from the interface we have
+
+Adapter :  A construct which adapts an existing interface X to conform to the required interface Y
+
