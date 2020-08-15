@@ -1,0 +1,22 @@
+﻿Composition let's us make compound objects
+e.g A mathematical expression composed of simple expressions; or
+    A grouping of shapes that consists of several shapes
+
+Composite design pattern is used to treat both single(sclarar) and composite objects uniformly
+
+    e.g Foo and Collection<Foo> have common APIs
+
+It is a mechanism for trating individual objects or composition of objects in a similar manner
+
+
+Summary
+
+Objects can use other objects via inheritance/composition
+
+Some composed and singular objects need similar/identical behavious
+
+Composite design pattern let's us treat both types of objects uniformly
+
+C# has special support for the enumeration concept
+
+A single object can masquerade as a collection with yield return this

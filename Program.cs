@@ -9,6 +9,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using static DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern.CompositeDesignPattern;
+using SquareComposite = DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern.Square;
+using CircleComposite = DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern.Circle;
+using DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern;
 
 namespace DesignPatterns
 {
@@ -17,7 +21,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunBridgePattern();
+            RunCompositeDesignPattern();
             Console.ReadLine();
         }
 
@@ -106,7 +110,7 @@ namespace DesignPatterns
             Rectangle rectangle = new Rectangle(2, 3);
             Console.WriteLine($"{rectangle} has area   {Area(rectangle)} ");
 
-            Rectangle square = new Square();
+            Rectangle square = new SOLIDDesignPrinciple.Square();
             square.Width = 4;
             Console.WriteLine($"{square} has area   {Area(square)} ");
         }
@@ -242,11 +246,40 @@ namespace DesignPatterns
 
              */
             IRenderer renderer = new VectorRenderer();
-            Circle circle = new Circle(renderer,5);
+            StructuralDesignPatterns.BridgePattern.Circle circle = new StructuralDesignPatterns.BridgePattern.Circle(renderer,5);
             circle.Draw();
             circle.Resize(2);
             circle.Draw();
         }
+
+
+        static void RunCompositeDesignPattern ()
+        {
+            GraphicObject drawing = new GraphicObject { Name = "My Drawing" };
+            drawing.Children.Add(new SquareComposite { Color = "Red" });
+            drawing.Children.Add(new CircleComposite { Color = "Yellow" });
+
+            GraphicObject group = new GraphicObject ();
+            group.Children.Add(new SquareComposite { Color = "Blue" });
+            group.Children.Add(new CircleComposite { Color = "Brown" });
+
+            drawing.Children.Add(group);
+
+            Console.WriteLine(drawing);
+        }
+
+        static void RunCompositeDesignPattern2()
+        {
+            Neuron neuron1 = new Neuron();
+            Neuron neuron2 = new Neuron();
+
+            neuron1.ConnectTo(neuron2);
+
+            NeuronLayer neuronLayer1 = new NeuronLayer();
+            NeuronLayer neuronLayer2 = new NeuronLayer();
+
+            neuronLayer1.ConnectTo(neuronLayer2);
+         }
 
 
     }
