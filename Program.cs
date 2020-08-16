@@ -13,6 +13,7 @@ using static DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern.Comp
 using SquareComposite = DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern.Square;
 using CircleComposite = DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern.Circle;
 using DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern;
+using DesignPatterns.StructuralDesignPatterns.DecoratorPattern;
 
 namespace DesignPatterns
 {
@@ -21,7 +22,8 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunCompositeDesignPattern();
+            RunDecoratorPattern();
+            RunCompositeDecoratorPattern();
             Console.ReadLine();
         }
 
@@ -280,6 +282,30 @@ namespace DesignPatterns
 
             neuronLayer1.ConnectTo(neuronLayer2);
          }
+
+        static void RunDecoratorPattern()
+        {
+            MyStringBuilder builder = "Hello ";
+            builder += "World";
+
+            Console.WriteLine(builder);
+
+
+
+        }
+
+        static void RunCompositeDecoratorPattern()
+        {
+            StructuralDesignPatterns.DecoratorPattern.Square square = new StructuralDesignPatterns.DecoratorPattern.Square(1.23f);
+            Console.WriteLine(square.AsString());
+
+            ColoredShape redSquare = new ColoredShape(square, "red");
+            Console.WriteLine(redSquare.AsString());
+
+            TransperentShape transperentShape = new TransperentShape(redSquare, 0.2f);
+             Console.WriteLine(transperentShape.AsString());
+
+        }
 
 
     }

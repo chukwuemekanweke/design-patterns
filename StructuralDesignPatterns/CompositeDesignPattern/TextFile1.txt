@@ -20,3 +20,18 @@ Composite design pattern let's us treat both types of objects uniformly
 C# has special support for the enumeration concept
 
 A single object can masquerade as a collection with yield return this
+
+
+From geeksforgeeks
+
+Composite pattern is a partitioning design pattern and describes a group of objects that is treated the same way as a single instance of the same type of object.
+The intent of a composite is to “compose” objects into tree structures to represent part-whole hierarchies. 
+It allows you to have a tree structure and ask each node in the tree structure to perform a task.
+
+
+What problems can the Composite design pattern solve? 
+
+A part-whole hierarchy should be represented so that clients can treat part and whole objects uniformly.
+A part-whole hierarchy should be represented as tree structure.
+
+Composite Pattern should be used when clients need to ignore the difference between compositions of objects and individual objects
