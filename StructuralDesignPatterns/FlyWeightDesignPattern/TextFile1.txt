@@ -1,0 +1,30 @@
+﻿
+
+Fly weight design pattern
+
+Avoid redundancy when storing data
+
+
+NOTE: wiki
+" String interning "
+In computer science, string interning is a method of storing only one copy of each distinct string value, which must be immutable.
+Interning strings makes some string processing tasks more time- or space-efficient at the cost of requiring more time when the string is created or interned.
+The distinct values are stored in a string intern pool.
+
+Flywight desing pattern is a space optimization technique that let's us use ess memory by storing externally the data associated with similar objects
+
+
+
+
+
+
+
+
+
+
+
+Store common data externally
+
+E.g Define the idea of 'ranges' on homogenous collections and store data related to those ranges
+
+.NET string interning is a good example of the flyweight pattern

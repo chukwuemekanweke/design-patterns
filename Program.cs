@@ -14,6 +14,8 @@ using SquareComposite = DesignPatterns.StructuralDesignPatterns.CompositeDesignP
 using CircleComposite = DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern.Circle;
 using DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern;
 using DesignPatterns.StructuralDesignPatterns.DecoratorPattern;
+using DesignPatterns.StructuralDesignPatterns.FacadePattern;
+using DesignPatterns.StructuralDesignPatterns.FlyWeightDesignPattern;
 
 namespace DesignPatterns
 {
@@ -22,8 +24,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunDecoratorPattern();
-            RunCompositeDecoratorPattern();
+            RunFlyWeightPattern();
             Console.ReadLine();
         }
 
@@ -305,6 +306,26 @@ namespace DesignPatterns
             TransperentShape transperentShape = new TransperentShape(redSquare, 0.2f);
              Console.WriteLine(transperentShape.AsString());
 
+        }
+
+        static void RunFacade()
+        {
+            HotelKeeper keeper = new HotelKeeper();
+
+            VegMenu v = keeper.getVegMenu();
+            NonVegMenu nv = keeper.getNonVegMenu();
+            Both both = keeper.getVegNonMenu();
+        }
+
+        static void RunFlyWeightPattern()
+        {
+            FormattedText text = new FormattedText("All things pass, All things must decay");
+            text.Capitalize(10, 15);
+            Console.WriteLine(text);
+
+            BetterFormattedText text2 = new BetterFormattedText("All things pass, All things must decay");
+            text2.GetRange(10, 15).Capitalize = true;
+            Console.WriteLine(text2);
         }
 
 
