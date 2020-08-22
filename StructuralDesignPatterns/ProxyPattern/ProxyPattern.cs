@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Dynamic;
 using System.Text;
 
 namespace DesignPatterns.StructuralDesignPatterns.ProxyPattern
@@ -62,7 +64,7 @@ namespace DesignPatterns.StructuralDesignPatterns.ProxyPattern
 
 
     #region Property Proxy
-    public class Property<T> where T : new()
+    public class Property<T> : IEquatable<Property<T>> where T : new()
     {
         private T value;
 
@@ -77,7 +79,7 @@ namespace DesignPatterns.StructuralDesignPatterns.ProxyPattern
                 Console.WriteLine($"Assigning value to {value}");
                 this.value = value;
             }
-            
+
         }
 
         public Property() : this(Activator.CreateInstance<T>())
@@ -103,12 +105,55 @@ namespace DesignPatterns.StructuralDesignPatterns.ProxyPattern
         }
 
 
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj))
+                return false;
+            if (ReferenceEquals(this, obj))
+                return true;
+
+            if (obj.GetType() != this.GetType())
+                return false;
+
+            return Equals((Property<T>)obj);
+
+        }
+
+        public bool Equals([AllowNull] Property<T> other)
+        {
+            if (ReferenceEquals(null, other))
+                return false;
+            if (ReferenceEquals(this, other))
+                return true;
+
+            //when all else fails and we can't get a comparison based on the reference equal check
+            //we use the default implementation of equals on the type T
+            return EqualityComparer<T>.Default.Equals(value, other.value);
+
+        }
+
+        public override int GetHashCode()
+        {
+            return value.GetHashCode();
+            //return EqualityComparer<T>.Default.GetHashCode(value);
+        }
+
+        public static bool operator ==(Property<T> left, Property<T> right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(Property<T> left, Property<T> right)
+        {
+            return !Equals(left, right);
+        }
 
     }
 
     public class Creature
     {
         private Property<int> agility { get; set; } = new Property<int>();
+
 
         public int Agility
         {
@@ -117,6 +162,11 @@ namespace DesignPatterns.StructuralDesignPatterns.ProxyPattern
         }
     }
     #endregion
+
+
+
+   
+
 
 
 }

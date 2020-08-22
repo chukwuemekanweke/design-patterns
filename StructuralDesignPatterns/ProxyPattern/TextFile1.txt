@@ -2,7 +2,7 @@
 
 Same interface, entirely different behaviour
 
-Proxy design pattern is a class that functions as an interface to particular resource. That resource may be remote, expensive to construct, or may require loggin or some other added functionality
+Proxy design pattern is a class that functions as an interface to particular resource. That resource may be remote, expensive to construct, or may require login or some other added functionality
 
 Difference between proxy and decorator is that you don't add new members.
 
@@ -12,3 +12,50 @@ You add additional functionality on existing members. But you don't add new memb
 
 Property proxy
 using an object as the property instead of the literal value
+
+
+https://www.geeksforgeeks.org/proxy-design-pattern/?ref=lbp
+
+Proxy means ‘in place of’, representing’ or ‘in place of’ or ‘on behalf of’ are literal meanings of proxy and that directly explains Proxy Design Pattern.
+Proxies are also called surrogates, handles, and wrappers.
+
+A real world example can be a cheque or credit card is a proxy for what is in our bank account. 
+It can be used in place of cash, and provides a means of accessing that cash when required. 
+And that’s exactly what the Proxy pattern does – “Controls and manage access to the object they are protecting“.
+
+
+When to use this pattern?
+
+Proxy pattern is used when we need to create a wrapper to cover the main object’s complexity from the client.
+
+Types of proxies
+
+Remote proxy:
+They are responsible for representing the object located remotely. Talking to the real object might involve marshalling and unmarshalling of data and talking to the remote object. All that logic is encapsulated in these proxies and the client application need not worry about them.
+
+Virtual proxy:
+
+These proxies will provide some default and instant results if the real object is supposed to take some time to produce results. These proxies initiate the operation on real objects and provide a default result to the application. Once the real object is done, these proxies push the actual data to the client where it has provided dummy data earlier.
+
+Protection proxy:
+
+If an application does not have access to some resource then such proxies will talk to the objects in applications that have access to that resource and then get the result back.
+
+
+
+As in the decorator pattern, proxies can be chained together. The client, and each proxy, believes it is delegating messages to the real server:
+
+
+
+Procy vs Decorator
+
+Proxy provides an identitcal interface; decorator provides an enhanced interface
+
+Decorator typically aggregates what it is decorating
+
+Proxy might not even be working with a materialized object
+
+A proxy has the same interface as the underlying object
+To create a proxy, simply replicate the existing interface of an object
+
+Add relevant functionality to the redefined member functions

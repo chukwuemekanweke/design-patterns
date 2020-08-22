@@ -12,6 +12,12 @@ using System.Linq;
 using static DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern.CompositeDesignPattern;
 using SquareComposite = DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern.Square;
 using CircleComposite = DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern.Circle;
+using CORCreature = DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern.Creature;
+using CORCreatureModifier = DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern.CreatureModifier;
+using CORDoubleAttackModifier = DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern.DoubleAttackModifier;
+using CORIncreaseDefenseModifier = DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern.IncreaseDefenseModifier;
+using CORNoBonusesModifier = DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern.NoBonusesModifier;
+
 using DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern;
 using DesignPatterns.StructuralDesignPatterns.DecoratorPattern;
 using DesignPatterns.StructuralDesignPatterns.FacadePattern;
@@ -25,7 +31,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunFlyWeightPattern();
+            RunChainOfResponsibility();
             Console.ReadLine();
         }
 
@@ -344,8 +350,40 @@ namespace DesignPatterns
         {
             Creature creature = new Creature();
             creature.Agility = 10;  // c.Agility = new Property<int>(10)
+                                    // If the private field acessor wasn't used
 
-           
+            creature.Agility = 10;
+
+        }
+
+
+        static void RunChainOfResponsibility()
+        {
+            CORCreature goblin = new CORCreature("goblin",2,2);
+            Console.WriteLine(goblin);
+
+
+            CORCreatureModifier root = new CORCreatureModifier(goblin);
+
+            CORNoBonusesModifier noBonusesModifier = new CORNoBonusesModifier(goblin);
+            root.Add(noBonusesModifier);
+
+            CORDoubleAttackModifier doubleAttackModifier = new CORDoubleAttackModifier(goblin);
+
+
+
+            root.Add(doubleAttackModifier);
+
+            CORIncreaseDefenseModifier increaseDefenseModifier = new CORIncreaseDefenseModifier(goblin);
+            root.Add(increaseDefenseModifier);
+
+
+            root.Handle();
+
+            Console.WriteLine(goblin);
+
+
+
         }
 
 

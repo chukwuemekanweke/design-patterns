@@ -28,3 +28,10 @@ Store common data externally
 E.g Define the idea of 'ranges' on homogenous collections and store data related to those ranges
 
 .NET string interning is a good example of the flyweight pattern
+
+
+https://www.geeksforgeeks.org/flyweight-design-pattern/
+Flyweight pattern is one of the structural design patterns as this pattern provides ways to decrease object count thus improving application required objects structure.
+Flyweight pattern is used when we need to create a large number of similar objects (say 105).
+One important feature of flyweight objects is that they are immutable. 
+This means that they cannot be modified once they have been constructed.
