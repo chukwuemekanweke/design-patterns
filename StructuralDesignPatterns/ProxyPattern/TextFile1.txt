@@ -1,0 +1,14 @@
+﻿Proxy Pattern
+
+Same interface, entirely different behaviour
+
+Proxy design pattern is a class that functions as an interface to particular resource. That resource may be remote, expensive to construct, or may require loggin or some other added functionality
+
+Difference between proxy and decorator is that you don't add new members.
+
+You add additional functionality on existing members. But you don't add new members
+
+
+
+Property proxy
+using an object as the property instead of the literal value

@@ -16,6 +16,7 @@ using DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern;
 using DesignPatterns.StructuralDesignPatterns.DecoratorPattern;
 using DesignPatterns.StructuralDesignPatterns.FacadePattern;
 using DesignPatterns.StructuralDesignPatterns.FlyWeightDesignPattern;
+using DesignPatterns.StructuralDesignPatterns.ProxyPattern;
 
 namespace DesignPatterns
 {
@@ -326,6 +327,25 @@ namespace DesignPatterns
             BetterFormattedText text2 = new BetterFormattedText("All things pass, All things must decay");
             text2.GetRange(10, 15).Capitalize = true;
             Console.WriteLine(text2);
+        }
+
+        static void RunProtectionProxy()
+        {
+            ICar car = new CarProxy(new Driver(12));   
+            car.Drive();
+
+            car = new CarProxy(new Driver(17));
+            car.Drive();
+
+
+        }
+
+        static void RunPropertyProxy()
+        {
+            Creature creature = new Creature();
+            creature.Agility = 10;  // c.Agility = new Property<int>(10)
+
+           
         }
 
 
