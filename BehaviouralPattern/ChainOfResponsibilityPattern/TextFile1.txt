@@ -44,3 +44,9 @@ Query = asking for information (e.g. please give me your attack value)
 
 CQS = having seperate means of sending commands and queries to (e.g) direct field access
 
+Chain of responsibility can be implemented as a chain of references or a centralized construct
+
+You enlist objects in the chain, possibly controlling their order
+
+Object removal fromthe chain e.g via Dispose()
+

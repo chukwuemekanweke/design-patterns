@@ -17,12 +17,14 @@ using CORCreatureModifier = DesignPatterns.BehaviouralPatterns.ChainOfResponsibi
 using CORDoubleAttackModifier = DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern.DoubleAttackModifier;
 using CORIncreaseDefenseModifier = DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern.IncreaseDefenseModifier;
 using CORNoBonusesModifier = DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern.NoBonusesModifier;
-
+using ChainOfResponsibility = DesignPatterns.BehaviouralPatterns.ChainOfResponsibilityPattern;
 using DesignPatterns.StructuralDesignPatterns.CompositeDesignPattern;
 using DesignPatterns.StructuralDesignPatterns.DecoratorPattern;
 using DesignPatterns.StructuralDesignPatterns.FacadePattern;
 using DesignPatterns.StructuralDesignPatterns.FlyWeightDesignPattern;
 using DesignPatterns.StructuralDesignPatterns.ProxyPattern;
+using DesignPatterns.BehaviouralPattern.CommandPattern;
+using Action = DesignPatterns.BehaviouralPattern.CommandPattern.Action;
 
 namespace DesignPatterns
 {
@@ -31,7 +33,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunChainOfResponsibility();
+            RunCommandPattern();
             Console.ReadLine();
         }
 
@@ -382,6 +384,59 @@ namespace DesignPatterns
 
             Console.WriteLine(goblin);
 
+
+
+        }
+
+        static void RunChainOfResponsibilityWithMediator()
+        {
+            ChainOfResponsibility.Game game = new ChainOfResponsibility.Game();
+            ChainOfResponsibility.Creature2 goblin = new ChainOfResponsibility.Creature2(game, "Strong Goblin", 3, 3);
+            
+            Console.WriteLine(goblin);
+             using (new ChainOfResponsibility.DoubleAttackModifier2(game,goblin))
+            {
+                Console.WriteLine(goblin);
+                using(new ChainOfResponsibility.IncreaseDefenseModifier2(game, goblin))
+                {
+                    Console.WriteLine(goblin);
+
+                }
+                Console.WriteLine(goblin);
+
+            }
+
+            Console.WriteLine(goblin);
+
+
+        }
+
+        static void RunCommandPattern()
+        {
+            BankAccount bankAccount = new BankAccount();
+            List<BankAccountCommand> commands = new List<BankAccountCommand>
+            {
+                new BankAccountCommand(bankAccount, Action.Deposit,100),
+                new BankAccountCommand(bankAccount, Action.Withdraw, 50 ) ,
+                new BankAccountCommand(bankAccount, Action.Withdraw, 1000 )
+
+            };
+
+            Console.WriteLine(bankAccount);
+            foreach (var command in commands)
+            {
+                command.Call();
+            }
+            Console.WriteLine(bankAccount);
+
+
+            //reason we used Enumerable.Reverse not list.Reverse. is cause the list.Reverse is a mutating operation
+            foreach (var command in Enumerable.Reverse(commands))
+            {
+                command.Undo();
+
+            }
+            Console.WriteLine(bankAccount);
 
 
         }
