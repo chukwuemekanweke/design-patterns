@@ -25,6 +25,7 @@ using DesignPatterns.StructuralDesignPatterns.FlyWeightDesignPattern;
 using DesignPatterns.StructuralDesignPatterns.ProxyPattern;
 using DesignPatterns.BehaviouralPattern.CommandPattern;
 using Action = DesignPatterns.BehaviouralPattern.CommandPattern.Action;
+using DesignPatterns.BehaviouralPattern.InterpreterPattern;
 
 namespace DesignPatterns
 {
@@ -33,7 +34,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunCommandPattern();
+            RunInterpreterPattern();
             Console.ReadLine();
         }
 
@@ -438,6 +439,17 @@ namespace DesignPatterns
             }
             Console.WriteLine(bankAccount);
 
+
+        }
+
+        static void RunInterpreterPattern()
+        {
+            string input = "(13+4)-(12+1)";
+            var tokens = Interpreter.Lex(input);
+            Console.WriteLine( string.Join("\t", tokens));
+
+           BinaryOperation binaryOperation =   Interpreter.Parse(tokens);
+            Console.WriteLine($"{input} = {binaryOperation.Value}");
 
         }
 

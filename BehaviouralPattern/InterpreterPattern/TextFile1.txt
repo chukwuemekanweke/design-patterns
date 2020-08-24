@@ -1,0 +1,33 @@
+﻿Interpreter Pattern
+
+
+Textual input needs to be processed
+  E.g turned into OOP structures
+Some examples
+    Programming language compilers, interpreters and IDEs
+    HTML, XML and similar
+    Numeric expressions (3+4/5)
+    Regular expressions
+
+
+This design pattern is used in processing structured text data. Does so by turning it into seperate lexical tokens
+and then interpreting the sequences of said tokens (parsing). 
+
+
+
+
+Interpreter design pattern is one of the behavioral design pattern. 
+Interpreter pattern is used to defines a grammatical representation for a language and provides an interpreter to deal with this grammar.
+This pattern involves implementing an expression interface which tells to interpret a particular context. This pattern is used in SQL parsing
+
+
+Summary
+
+An intepreter acts in 2 stages
+
+Lexing: turns text into tokens
+
+Parsing the tokens into meaningful constructs
+
+Parsed data can then be traversed
+
