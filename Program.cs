@@ -37,7 +37,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunMediator();
+            RunMemento();
             Console.ReadLine();
         }
 
@@ -507,6 +507,28 @@ namespace DesignPatterns
             simon.Say("Hi eveyone");
 
             jane.PrivateMessage("Simon", "Glad you can join us");
+
+        }
+
+        static void RunMemento ()
+        {
+            var ba = new DesignPatterns.MementoPattern.BankAccount(100);
+             ba.Deposit(50);
+
+            ba.Deposit(25);
+
+
+            Console.WriteLine(ba);
+            ba.Undo();
+            Console.WriteLine( "Undo 1: "+ ba);
+
+            ba.Undo();
+            Console.WriteLine("Undo 2: "+ ba);
+
+            ba.Redo();
+            Console.WriteLine("Redo: " + ba);
+
+
 
         }
 

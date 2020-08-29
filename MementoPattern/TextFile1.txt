@@ -1,0 +1,14 @@
+﻿The goal of the Memento pattern is to keep some form of a token, to help you return an objects state
+
+Motivation for the Memento pattern
+
+An object goes through changes
+	e.g A bank account get deposits
+
+There are different ways of navigating those changes
+
+The memento patterns involves saving a snapshot of a system, that allows for roll backs 
+
+A memento is a token/ handle representing the system state.
+Allowing us to roll back to the state when the token was generated.
+May or may not directly expose state information
