@@ -1,0 +1,28 @@
+﻿Motivation
+
+Components may go in and out of a system at any time
+	chat room participants
+	players in an MMORPG
+
+It makes no sense for them to have a direct reference to one another
+	Those references may go dead
+
+
+Solution: Have them all refer to some central component that facilitates communicaton
+
+
+The Mediator is a component that facilitates communication between other components without them necessarily being aware 
+of each other or having direct (reference) access to each other
+
+
+Summary
+
+Create a mediator, and have each object in the system refer to it
+
+Mediator engages in bi directional communication with it's connected components
+
+Mediator has functions the components can call
+
+Components have functions the mediator can call
+
+We use reactive extensions libraries which make the communication easier to implement

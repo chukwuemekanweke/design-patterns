@@ -4,6 +4,7 @@ using DesignPatterns.PrototypeDesignPattern;
 using DesignPatterns.Singleton;
 using DesignPatterns.SOLIDDesignPrinciple;
 using DesignPatterns.StructuralDesignPatterns.BridgePattern;
+using DesignPatterns.MediatorPattern;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,6 +28,7 @@ using DesignPatterns.BehaviouralPattern.CommandPattern;
 using Action = DesignPatterns.BehaviouralPattern.CommandPattern.Action;
 using DesignPatterns.BehaviouralPattern.InterpreterPattern;
 using DesignPatterns.IteratorPattern;
+using DesignPatterns.MediatorPattern;
 
 namespace DesignPatterns
 {
@@ -35,7 +37,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunIteratorPattern();
+            RunMediator();
             Console.ReadLine();
         }
 
@@ -482,6 +484,29 @@ namespace DesignPatterns
             }
             Console.WriteLine();
 
+
+        }
+
+        static void RunMediator()
+        {
+            ChatRoom chatRoom = new ChatRoom();
+
+            MediatorPattern.Person john = new MediatorPattern.Person("John");
+            MediatorPattern.Person jane = new MediatorPattern.Person("Jane");
+
+            chatRoom.Join(john);
+            chatRoom.Join(jane);
+
+            john.Say("Hi!!");
+            jane.Say("oh, hey john");
+
+            MediatorPattern.Person simon = new MediatorPattern.Person("Simon");
+
+            chatRoom.Join(simon);
+
+            simon.Say("Hi eveyone");
+
+            jane.PrivateMessage("Simon", "Glad you can join us");
 
         }
 
