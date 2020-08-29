@@ -26,6 +26,7 @@ using DesignPatterns.StructuralDesignPatterns.ProxyPattern;
 using DesignPatterns.BehaviouralPattern.CommandPattern;
 using Action = DesignPatterns.BehaviouralPattern.CommandPattern.Action;
 using DesignPatterns.BehaviouralPattern.InterpreterPattern;
+using DesignPatterns.IteratorPattern;
 
 namespace DesignPatterns
 {
@@ -34,7 +35,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunInterpreterPattern();
+            RunIteratorPattern();
             Console.ReadLine();
         }
 
@@ -450,6 +451,37 @@ namespace DesignPatterns
 
            BinaryOperation binaryOperation =   Interpreter.Parse(tokens);
             Console.WriteLine($"{input} = {binaryOperation.Value}");
+
+        }
+
+
+        static void RunIteratorPattern()
+        {
+            var root = new Node<int>(1, new Node<int>(2), new Node<int>(3));
+
+            var it = new InOrderIterator<int>(root);
+
+            while (it.MoveNext())
+            {
+                Console.WriteLine(it.Current.Value);
+            }
+            Console.WriteLine();
+
+
+            var tree = new BinaryTree<int>(root);
+            Console.WriteLine(string.Join(',', tree.InOrder.Select(x => x.Value)));
+
+            Console.WriteLine();
+
+
+            //this foreach loop works because of duck typing
+            foreach (var node in tree)
+            {
+                Console.WriteLine(node.Value);
+
+            }
+            Console.WriteLine();
+
 
         }
 

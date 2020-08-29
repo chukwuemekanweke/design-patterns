@@ -1,0 +1,24 @@
+﻿Iteration (traversal) is a core functionality of various ata structures
+
+An iterator is a class that facilitates the traversal
+
+	Keeps a reference to the current element
+	Knows how to move to a different element
+
+Iterator is an implicit construct
+	.NET builds a state machine around yield return statements
+
+Iterator
+An object (or, in .NET , a method) that facilitates the traversal of a data structure
+
+.NET framework already builds a state machine for you when you have  method that returns an IEnumerable
+
+Summary
+
+An iterator specifies how you can traverse an object
+
+An iterator object, unlike a method , cannot be recursive
+
+Generally , an Ienumerable<T>-returning method is Enough
+
+Iteration works through duck typing - you need a GetEnumerator() that yields a type that has Current property and MoveNext()
