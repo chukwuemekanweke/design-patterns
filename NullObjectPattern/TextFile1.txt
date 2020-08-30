@@ -1,0 +1,11 @@
+﻿Null Object pattern
+
+When cmpnent A uses component B, it typically assumes that B is non-null
+
+You typically don't go around putting null checks all over the place
+
+There is no option of telling A not to use an instance if B
+
+The Null object design pattern is 
+
+A no-op object that conforms to the required interface, satisfying a dependency requirement of some other object

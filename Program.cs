@@ -29,6 +29,8 @@ using Action = DesignPatterns.BehaviouralPattern.CommandPattern.Action;
 using DesignPatterns.BehaviouralPattern.InterpreterPattern;
 using DesignPatterns.IteratorPattern;
 using DesignPatterns.MediatorPattern;
+using DesignPatterns.ObserverPattern;
+using System.ComponentModel;
 
 namespace DesignPatterns
 {
@@ -37,7 +39,7 @@ namespace DesignPatterns
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            RunMemento();
+            RunOnserverPattern();
             Console.ReadLine();
         }
 
@@ -532,6 +534,102 @@ namespace DesignPatterns
 
         }
 
+        static void RunEventBasedObserverPattern()
+        {
 
+            var person = new DesignPatterns.ObserverPattern.Person();
+
+            person.FallsIll += CallDoctor;
+            person.CatchACold();
+            person.FallsIll -= CallDoctor;
+
+
+
+
+        }
+
+        private static void CallDoctor(object sender, FallsIllEventArgs e)
+        {
+            Console.WriteLine($"A doctor has been called to { e.Address }");
+        }
+
+        /// <summary>
+        /// The window destructor is not called because of the window event handler that is registered 
+        /// on the button clicked event
+        /// </summary>
+        static void WeakObserverPattern()
+        {
+            var button = new Button();
+            WeakReference windowRef = null;
+            using (var window = new Window(button))
+            {
+
+              windowRef = new WeakReference(window);
+              button.Fire();
+            }
+
+            Console.WriteLine("Setting window to null");
+
+
+            FireGC();
+            Console.WriteLine($"Is the window alive after GC? {windowRef.IsAlive}");
+
+
+        }
+
+
+
+
+
+
+        private static void FireGC()                             
+        {
+            Console.WriteLine("Starting GC");
+
+            GC.Collect();
+            GC.WaitForPendingFinalizers();  
+            GC.Collect();
+
+            Console.WriteLine("GC is done");
+
+
+        }
+
+        private static void RunOnserverPattern()
+        {
+            Market market = new Market();
+
+            market.PropertyChanged += (sender, eventArgs) =>
+            {
+
+                if(eventArgs.PropertyName == "Volatility")
+                {
+                    Console.WriteLine($"{eventArgs.PropertyName} has changed");
+
+                }
+
+            };
+
+            market.PriceAdded += (sender, f) =>
+            {
+                Console.WriteLine($"We got a price {f}");
+            };
+
+
+            market.Bids.ListChanged += (sender, eventArgs) =>
+            {
+                if (eventArgs.ListChangedType == ListChangedType.ItemAdded)
+                {
+                    float bid = ((BindingList<float>)sender)[eventArgs.NewIndex];
+                    Console.WriteLine($"Recevied bid with offer price of {bid}");
+                }
+            };
+
+
+            market.AddPrice(123);
+            market.Volatility = 2;
+            market.Bids.Add(2000);
+
+        }
     }
 }
